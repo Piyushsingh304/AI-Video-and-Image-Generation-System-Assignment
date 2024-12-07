@@ -1,0 +1,32 @@
+# Core Deep Learning Framework
+torch>=1.13.0
+torchvision>=0.14.0
+torchaudio>=0.13.0
+
+# Hugging Face Libraries
+diffusers>=0.19.0
+transformers>=4.30.0
+
+# Additional Dependencies
+numpy>=1.21.0
+Pillow>=9.0.0
+
+# Optional: For potential future improvements
+scipy>=1.7.0
+matplotlib>=3.5.0
+
+# Environment Management
+python-dotenv>=0.21.0
+
+# If you want to create a web interface in future
+fastapi>=0.68.0
+uvicorn>=0.15.0
+
+# GPU Support (Optional, install based on your CUDA version)
+# torch-cuda-11.7  # Example for CUDA 11.7
+
+# For tkinter base approch.
+requests>=2.31.0
+Pillow>=10.2.0
+customtkinter>=5.2.1
+huggingface_hub>=0.20.3
