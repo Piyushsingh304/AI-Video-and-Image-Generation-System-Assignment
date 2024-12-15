@@ -65,11 +65,33 @@ async def create_image_generation(request: ImageGenerationRequest):
     user_dir = f"generated_content/{user_id}"
     os.makedirs(user_dir, exist_ok=True)
     
-    # Generate 5 images
+    # Prompt engineering techniques
+    prompt_variations = [
+        # Base prompt with different artistic styles
+        f"({request.prompt}), in the style of photorealism, ultra detailed, sharp focus",
+        f"({request.prompt}), impressionist painting, soft brushstrokes, vibrant colors",
+        f"({request.prompt}), digital art, cyberpunk aesthetic, neon highlights",
+        f"({request.prompt}), watercolor illustration, dreamy soft edges, pastel palette",
+        f"({request.prompt}), highly detailed sketch, pencil drawing technique, intricate linework"
+    ]
+    
+    # Additional prompt modifiers to add variety
+    style_modifiers = [
+        "masterpiece, best quality",
+        "cinematic lighting, dramatic composition",
+        "ethereal glow, soft ambient light",
+        "hyper-realistic details, 8k resolution",
+        "surreal interpretation, dream-like atmosphere"
+    ]
+    
+    # Generate 3 images with engineered prompts
     image_paths = []
-    for i in range(5):
+    for i in range(3):
         try:
-            image_bytes = generate_image(request.prompt)
+            # Combine base variation with a random style modifier
+            final_prompt = f"{prompt_variations[i]}, {style_modifiers[i]}"
+            
+            image_bytes = generate_image(final_prompt)
             image_path = f"{user_dir}/image_{generation_id}_{i}.png"
             
             with open(image_path, "wb") as f:
@@ -122,3 +144,6 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
+# I believe in Angels, something good in everything I see
+
+# being crazy deeply in love highest vibe ecstasy joy
